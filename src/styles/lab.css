@@ -1,0 +1,25 @@
+/* ───── Code Lab (pixel style) ───── */
+.lab { display: flex; flex-direction: column; gap: 12px; }
+.lab__head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.lab__titles { display: grid; flex: 1 1 220px; min-width: 0; } .lab__titles h1 { font-size: clamp(1.4rem, 3vw, 2rem); } .lab__titles .muted { font-size: 0.85rem; }
+.lab__tpl { width: auto; min-width: 150px; min-height: 40px; padding-inline: 10px; }
+.lab__status { gap: 8px; text-transform: none; letter-spacing: 0; font-size: 0.74rem; }
+.lab__dot { width: 9px; height: 9px; background: var(--text-3); display: inline-block; }
+.lab__dot--ready, .lab__dot--idle { background: var(--success); } .lab__dot--loading, .lab__dot--running { background: var(--warning); animation: blink 0.8s steps(1) infinite; } .lab__dot--failed { background: var(--error); }
+.lab__tabs { align-self: start; }
+.lab__grid { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; grid-auto-rows: minmax(0, 1fr); }
+@media (min-width: 1000px) { .lab__grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } }
+.lab__card { display: flex; flex-direction: column; min-height: 0; overflow: hidden; padding: 0; }
+.lab__bar { display: flex; align-items: center; gap: 6px; padding: 7px 10px; background: var(--surface-tint); border-bottom: var(--border-w) solid var(--border); flex-wrap: wrap; }
+.lab__spacer { flex: 1; }
+.lab__ib { width: 34px; height: 34px; }
+.lab__editor { flex: 1; min-height: 0; background: var(--code-bg); overflow: hidden; }
+.lab__editor .cm-editor { height: 100%; }
+.lab__console { flex: 1; min-height: 0; margin: 0; padding: 14px 16px; overflow: auto; background: var(--code-bg); color: var(--code-text); font: 0.88rem/1.65 var(--font-code); white-space: pre-wrap; overflow-wrap: anywhere; }
+.lab__console .is-err { color: #ff9a8f; } .lab__hint { color: #7b88a8; font-family: var(--font-body); }
+.lab__console .caret { background: #8cb6ff; }
+.lab__inwrap { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 12px; background: var(--surface); }
+.lab__stdin { flex: 1; min-height: 120px; resize: none; background: var(--code-bg); color: var(--code-text); font-family: var(--font-code); border-color: var(--border); }
+.lab__foot { padding: 8px 10px; border-top: 2px solid var(--border-soft); background: var(--surface); }
+@media (max-width: 999px) { .lab__grid { grid-auto-rows: 1fr; } .lab__status { order: 5; } }
+@media (max-width: 640px) { .lab__head { gap: 8px; } .lab__tpl { flex: 1; min-width: 0; } }

@@ -1,0 +1,40 @@
+/* ───── Arabic fonts ─────
+   Arabic mode uses ONLY these two families (files live in /public/fonts):
+     arabic-heading.woff2 → YR Speed Arabic  → headings, titles, buttons, chips   (--font-ar-heading)
+     arabic-body.woff2    → Palestine        → body text, chat answers, forms     (--font-ar-body)
+   Both ship a single (regular) weight, so the weight range below stops the browser from faking bold.
+   unicode-range lists only the characters each font really draws: Palestine has EMPTY Latin letters (A-Z, a-z) and lacks
+   most punctuation, so those characters fall through to YR Speed Arabic instead of rendering invisible. */
+@font-face {
+  font-family: 'ForkedArabicHeading';
+  src: url('/fonts/arabic-heading.woff2') format('woff2');
+  unicode-range: U+20-5A, U+5F-7E, U+A0, U+A6, U+AB, U+AD, U+B4, U+B8, U+BB, U+2C6, U+2DD, U+37E, U+401, U+410-44F, U+451, U+621-63A, U+640-656, U+660-669, U+66E-671, U+6A1, U+6A4, U+6BA, U+2013-2014, U+2018-201A, U+201C-201E;
+  font-weight: 400 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'ForkedArabicBody';
+  src: url('/fonts/arabic-body.woff2') format('woff2');
+  unicode-range: U+20, U+2E, U+30-39, U+A0, U+60C, U+61F, U+621-63A, U+640-64B, U+653, U+660-669, U+66E, U+FC0A, U+FC31-FC32, U+FC6A, U+FC92, U+FC94, U+FE82, U+FE84, U+FE86, U+FE88, U+FE8A-FE8C, U+FE8E, U+FE90-FE92, U+FE94, U+FE96-FE98, U+FE9A-FE9C, U+FE9E-FEA0, U+FEA2-FEA4, U+FEA6-FEA8, U+FEAA, U+FEAC, U+FEAE, U+FEB0, U+FEB2-FEB4, U+FEB6-FEB8, U+FEBA-FEBC, U+FEBE-FEC0, U+FEC2-FEC4, U+FEC6-FEC8, U+FECA-FECC, U+FECE-FED0, U+FED2-FED4, U+FED6-FED8, U+FEDA-FEDC, U+FEDE-FEE0, U+FEE2-FEE4, U+FEE6-FEE8, U+FEEA-FEEC, U+FEEE, U+FEF0, U+FEF2-FEFC;
+  font-weight: 400 900; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-ar-heading: 'ForkedArabicHeading', 'ForkedArabicBody', sans-serif;
+  --font-ar-body: 'ForkedArabicBody', 'ForkedArabicHeading', sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+/* Arabic mode: the two Arabic fonts replace every UI font (including the mono labels), code stays monospaced. */
+:root[lang='ar'] {
+  --font-heading: var(--font-ar-heading);
+  --font-body: var(--font-ar-body);
+  --font-mono: var(--font-ar-body);
+}
+:root[lang='ar'] pre, :root[lang='ar'] code, :root[lang='ar'] .codeblock, :root[lang='ar'] .cm-editor,
+:root[lang='ar'] .lab__console, :root[lang='ar'] .lab__stdin, :root[lang='ar'] .md-fence { --font-mono: var(--font-code); }
+:root[lang='ar'] body { letter-spacing: 0; line-height: 1.75; }
+:root[lang='ar'] h1, :root[lang='ar'] h2, :root[lang='ar'] h3, :root[lang='ar'] h4 { letter-spacing: 0; line-height: 1.4; }
+:root[lang='ar'] .chip, :root[lang='ar'] .eyebrow, :root[lang='ar'] .qbadge__top { letter-spacing: 0; text-transform: none; }
+:root[lang='ar'] .footer__grid h4 { letter-spacing: 0; text-transform: none; }
+:root[lang='ar'] button, :root[lang='ar'] input, :root[lang='ar'] textarea, :root[lang='ar'] select { font-family: var(--font-body); }
+:root[lang='ar'] .btn, :root[lang='ar'] .seg button { font-family: var(--font-heading); }
