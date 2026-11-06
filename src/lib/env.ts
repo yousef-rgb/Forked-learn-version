@@ -9,7 +9,8 @@ const clean = (v: string | undefined) => (v ?? '').trim().replace(/\/+$/, '')
 /** Base URL of the chat backend, e.g. https://your-backend.example.com/api (expects POST {base}/chat). */
 export const API_BASE_URL = clean(import.meta.env.VITE_API_BASE_URL)
 /** Full URL of the Cloudflare Worker that generates images (expects POST {url}). */
-export const IMAGE_WORKER_URL = clean(import.meta.env.VITE_IMAGE_WORKER_URL)
+export const IMAGE_WORKER_URL =
+  'https://forked-image.eltayelyousef72.workers.dev/'
 
 export const isChatConfigured = API_BASE_URL.length > 0
 export const isImageConfigured = IMAGE_WORKER_URL.length > 0
